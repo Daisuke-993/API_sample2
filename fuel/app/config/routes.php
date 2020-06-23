@@ -40,4 +40,8 @@ return array(
 
 	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),
 	'weather' => array(array('GET', new Route('weather/top')), array('POST', new Route('weather/city'))),
+	'word' => 'word/index',
+	'word/form' => 'word/form',
+	'word/create' => array(array('POST', new Route('word/create'))),
+
 );
