@@ -12,7 +12,12 @@
 				<?php foreach($words as $word) : ?>
         		<tr>
             		<td><?php echo $word->content; ?></td>
-            		<td></td>
+            		<td>
+						<form method="POST" action="/word/delete">
+							<input type="hidden" name="id" value=<?php echo $word->id; ?>>
+            				<input type="submit" value="Delete">
+  						</form>  
+					</td>
 				</tr>
 				<?php endforeach; ?>
     		</tbody>

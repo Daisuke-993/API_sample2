@@ -6,10 +6,7 @@ class Controller_Word extends Controller_Template
 	public function action_index()
 	{
 		$data['words'] =Model_Word::find('all');
-		//var_dump(Model_Word::find('all'));
-		//exit();
 		return View::forge('word/index', $data);
-		//return View::forge('word/index');
 	}
 
 	public function action_form()
@@ -23,6 +20,13 @@ class Controller_Word extends Controller_Template
 		$word = Model_Word::forge();
 		$word->set($form);
 		$word->save();
+		Response::redirect('/word/index');
+	}
+
+	public function post_destroy()
+	{
+		$word = Model_Word::find(Input::post('id'));
+		$word->delete();
 		Response::redirect('/word/index');
 	}
 

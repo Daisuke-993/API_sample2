@@ -43,5 +43,6 @@ return array(
 	'word' => 'word/index',
 	'word/form' => 'word/form',
 	'word/create' => array(array('POST', new Route('word/create'))),
+	'word/delete' => array(array('POST', new Route('word/destroy'))),
 
 );
