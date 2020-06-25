@@ -9,9 +9,10 @@ class Controller_Word extends Controller_Template
 		return View::forge('word/index', $data);
 	}
 
-	public function action_form()
+	public function get_create()
 	{
-		return View::forge('word/form');
+		$data = array('content' => null, 'id' => null);
+		return View::forge('word/form', $data);
 	}
 
 	public function post_create()
@@ -23,10 +24,26 @@ class Controller_Word extends Controller_Template
 		Response::redirect('/word/index');
 	}
 
-	public function post_destroy()
+	public function action_delete($id)
 	{
-		$word = Model_Word::find(Input::post('id'));
+		$word = Model_Word::find($id);
 		$word->delete();
+		Response::redirect('word');
+	}
+
+	public function get_edit($id)
+	{
+		$word = Model_Word::find($id);
+		$data = array('content' => $word->content, 'id' => $id);
+		return View::forge('word/form', $data);
+	}
+
+	public function post_edit($id)
+	{
+		$word = Model_Word::find($id);
+		$form['content'] = Input::post('content');
+		$word->set($form);
+		$word->save();
 		Response::redirect('/word/index');
 	}
 

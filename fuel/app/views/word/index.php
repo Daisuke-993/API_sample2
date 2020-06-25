@@ -13,15 +13,15 @@
         		<tr>
             		<td><?php echo $word->content; ?></td>
             		<td>
-						<form method="POST" action="/word/delete">
-							<input type="hidden" name="id" value=<?php echo $word->id; ?>>
-            				<input type="submit" value="Delete">
-  						</form>  
+						<?php echo Html::anchor('word/edit/' . $word->id, 'edit'); ?>  
+					</td>
+					<td>
+						<?php echo Html::anchor('word/delete/' . $word->id, 'delete'); ?>  
 					</td>
 				</tr>
 				<?php endforeach; ?>
     		</tbody>
 		</table>
-        <a href="/word/form">Create</a>
+        <a href="/word/create">Create</a>
     </body>
 </html>
