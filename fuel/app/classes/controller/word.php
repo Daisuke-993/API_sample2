@@ -6,13 +6,15 @@ class Controller_Word extends Controller_Template
 	public function action_index()
 	{
 		$data['words'] =Model_Word::find('all');
-		return View::forge('word/index', $data);
+		$this->template->title = "Word";
+		$this->template->content = View::forge('word/index', $data);
 	}
 
 	public function get_create()
 	{
 		$data = array('content' => null, 'id' => null);
-		return View::forge('word/form', $data);
+		$this->template->title = "Word";
+		$this->template->content = View::forge('word/form', $data);
 	}
 
 	public function post_create()
@@ -35,7 +37,8 @@ class Controller_Word extends Controller_Template
 	{
 		$word = Model_Word::find($id);
 		$data = array('content' => $word->content, 'id' => $id);
-		return View::forge('word/form', $data);
+		$this->template->title = "Word";
+		$this->template->content = View::forge('word/form', $data);
 	}
 
 	public function post_edit($id)
