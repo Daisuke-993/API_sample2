@@ -1,7 +1,8 @@
 <?php
 
-class Controller_Weather extends Controller_Template
+class Controller_Weather extends Controller_Hybrid
 {
+
 
 	public function get_index()
 	{
@@ -11,6 +12,7 @@ class Controller_Weather extends Controller_Template
 
 	public function post_index()
 	{
+		$this->format = 'json';
 		$content = \Input::json('city');
 		$curl = \Request::forge('https://api.openweathermap.org/data/2.5/weather', 'curl');
 		$curl->set_method('get');
@@ -25,7 +27,7 @@ class Controller_Weather extends Controller_Template
             'temp' => $weather['main']['temp'],
             'wind' => $weather['wind']['speed']
         ));
-        return $weather_json;
+		return $this->response($weather_json);
 
 	}
 
