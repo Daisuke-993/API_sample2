@@ -39,7 +39,6 @@ return array(
 	 */
 
 	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),
-	'weather' => array(array('GET', new Route('weather/top')), array('POST', new Route('weather/city'))),
 
 
 );

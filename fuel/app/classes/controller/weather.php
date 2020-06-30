@@ -3,17 +3,13 @@
 class Controller_Weather extends Controller_Template
 {
 
-	public function get_top()
+	public function get_index()
 	{
-		//$data["subnav"] = array('get'=> 'active' );
-		//$this->template->title = 'Weather &raquo; Get';
-		//$this->template->content = View::forge('weather/get', $data);
-		$hello = array();
-		$hello['value'] = 'Hello'; 
-		return View::forge('weather/get',$hello);
+		$this->template->title = 'weather';
+		$this->template->content = View::forge('weather/form');
 	}
 
-	public function post_city()
+	public function post_index()
 	{
 		$content = \Input::json('city');
 		$curl = \Request::forge('https://api.openweathermap.org/data/2.5/weather', 'curl');
