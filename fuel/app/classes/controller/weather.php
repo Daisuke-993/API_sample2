@@ -13,6 +13,7 @@ class Controller_Weather extends Controller_Hybrid
 	public function post_index()
 	{
 		$this->format = 'json';
+		$this->rest_format = 'json';
 		$content = \Input::json('city');
 		$curl = \Request::forge('https://api.openweathermap.org/data/2.5/weather', 'curl');
 		$curl->set_method('get');
